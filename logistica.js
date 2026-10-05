@@ -24,7 +24,7 @@
 
     // Estado Reactivo / Svelte Component Simulation
     let items = [
-      { id: 'PROD-101', nombre: 'Queso CosteÃ±o Artesanal (Kg)', precio: 22000, cantidad: 2 },
+      { id: 'PROD-101', nombre: 'Queso Costeño Artesanal (Kg)', precio: 22000, cantidad: 2 },
       { id: 'PROD-102', nombre: 'Yuca Criolla de Valledupar (Bulto)', precio: 35000, cantidad: 1 }
     ];
     let offlineMode = props.offlineMode || false;
@@ -35,7 +35,7 @@
       container.innerHTML = `
         <div class="agro-carrito-container">
           <div class="agro-carrito-header">
-            <h3>🛒 Carrito y ConsolidaciÃ³n de Pedido</h3>
+            <h3>🛒 Carrito y Consolidación de Pedido</h3>
             ${offlineMode ? '<span class="agro-badge-offline">Modo Offline Resiliente</span>' : ''}
           </div>
 
@@ -50,7 +50,7 @@
                   <div class="agro-item-row" data-id="${item.id}">
                     <div class="agro-item-info">
                       <span class="agro-item-nombre">${item.nombre}</span>
-                      <span class="agro-item-precio">$${item.precio.toLocaleString()} c/u</span>
+                      <span class="agro-item-precio">$${item.precio.toLocaleString()} COP</span>
                     </div>
                     <div class="agro-cant-controls">
                       <button class="agro-btn-circle btn-restar" data-id="${item.id}">-</button>
