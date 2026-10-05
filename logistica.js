@@ -1,7 +1,7 @@
 /**
- * MFE LogÃ­stica y Carrito de Compras (AgroCesar)
- * TecnologÃ­a: Svelte (Standalone / Standalone Component vÃ­a CDN)
- * Responsable: Equipo LogÃ­stica (Anderson Cuadrado)
+ * MFE Logística y Carrito de Compras (AgroCesar)
+ * Tecnología: Svelte (Standalone / Standalone Component vía CDN)
+ * Responsable: Equipo Logística (Anderson Cuadrado)
  */
 
 (function () {
@@ -9,7 +9,7 @@
   const activeListeners = new Map();
 
   /**
-   * Montaje del MFE LogÃ­stica y Carrito
+   * Montaje del MFE Logística y Carrito
    */
   window.mountAgroLogistica = function (containerId, props = {}) {
     const container = typeof containerId === 'string' ? document.getElementById(containerId) : containerId;
@@ -22,11 +22,8 @@
       window.unmountAgroLogistica(containerId);
     }
 
-    // Estado Reactivo / Svelte Component Simulation
-    let items = [
-      { id: 'PROD-101', nombre: 'Queso Costeño Artesanal (Kg)', precio: 22000, cantidad: 2 },
-      { id: 'PROD-102', nombre: 'Yuca Criolla de Valledupar (Bulto)', precio: 35000, cantidad: 1 }
-    ];
+    // Estado Reactivo vacio por defecto
+    let items = props.items || [];
     let offlineMode = props.offlineMode || false;
 
     function render() {
@@ -41,7 +38,7 @@
 
           ${
             items.length === 0
-              ? '<p style="text-align:center; padding: 20px; color: #6b7280;">El carrito estÃ¡ vacÃ­o. Agrega productos desde el CatÃ¡logo.</p>'
+              ? '<p style="text-align:center; padding: 24px; color: #6b7280; font-size: 0.95rem;">El carrito está vacío. Agrega productos desde el Catálogo.</p>'
               : `
               <div class="agro-items-list">
                 ${items
@@ -66,10 +63,10 @@
               <div class="agro-resumen-panel">
                 <div class="agro-resumen-total">
                   <span>Total Pedido:</span>
-                  <span>$${total.toLocaleString()}</span>
+                  <span>$${total.toLocaleString()} COP</span>
                 </div>
                 <button id="btn-consolidar-pedido" class="agro-btn-comprar">
-                  🚀 Consolidar y Enviar Pedido (Emitir Evento)
+                  🚀 Consolidar y Enviar Pedido
                 </button>
               </div>
             `
@@ -77,7 +74,7 @@
         </div>
       `;
 
-      // Registrar listeners para controles reactivos de la UI de Svelte
+      // Registrar listeners para controles reactivos de la UI
       container.querySelectorAll('.btn-sumar').forEach((btn) => {
         btn.addEventListener('click', (e) => {
           const id = e.target.dataset.id;
