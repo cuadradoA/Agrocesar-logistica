@@ -1,0 +1,121 @@
+/* Estilos globales para MFE Logistica consumiendo los tokens visuales del Shell */
+:root {
+  --agro-primario: #2e7d32;
+  --agro-secundario: #fbc02d;
+  --agro-fuente: 'Inter', system-ui, -apple-system, sans-serif;
+  --agro-fondo: #f9fafb;
+  --agro-espaciado-md: 16px;
+  --agro-borde-radius: 12px;
+  --agro-sombre: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.agro-carrito-container {
+  font-family: var(--agro-fuente);
+  background: #ffffff;
+  border-radius: var(--agro-borde-radius);
+  padding: var(--agro-espaciado-md);
+  box-shadow: var(--agro-sombre);
+  max-width: 650px;
+  margin: 0 auto;
+  color: #1f2937;
+}
+
+.agro-carrito-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid var(--agro-fondo);
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+}
+
+.agro-carrito-header h3 {
+  margin: 0;
+  color: var(--agro-primario);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.agro-item-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px dashed #e5e7eb;
+}
+
+.agro-item-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.agro-item-nombre {
+  font-weight: 600;
+  color: #111827;
+}
+
+.agro-item-precio {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.agro-cant-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.agro-btn-circle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid #d1d5db;
+  background: white;
+  cursor: pointer;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.agro-resumen-panel {
+  background: var(--agro-fondo);
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 20px;
+}
+
+.agro-resumen-total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: var(--agro-primario);
+  margin-bottom: 12px;
+}
+
+.agro-btn-comprar {
+  width: 100%;
+  background: var(--agro-primario);
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.agro-btn-comprar:hover {
+  background: #1b5e20;
+}
+
+.agro-badge-offline {
+  font-size: 0.75rem;
+  background: #fef3c7;
+  color: #92400e;
+  padding: 2px 8px;
+  border-radius: 4px;
+}

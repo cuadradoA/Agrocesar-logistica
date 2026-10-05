@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Pruebas de Contrato - MFE Logística (Svelte)</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="logistica.js"></script>
+  <style>
+    body { font-family: system-ui, sans-serif; padding: 20px; background: #f3f4f6; }
+    .test-suite { background: white; padding: 20px; border-radius: 8px; max-width: 600px; margin: 0 auto; }
+    .pass { color: #16a34a; font-weight: bold; }
+    .fail { color: #dc2626; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <div class="test-suite">
+    <h2>🧪 Pruebas de Contrato - MFE Logística</h2>
+    <hr>
+    <ul id="test-results"></ul>
+    <div id="test-mount-target" style="display:none;"></div>
+  </div>
+
+  <script>
+    const results = document.getElementById('test-results');
+
+    function logTest(name, passed, detail = '') {
+      const li = document.createElement('li');
+      li.innerHTML = `<strong>${name}:</strong> <span class="${passed ? 'pass' : 'fail'}">${passed ? 'PASÓ (OK)' : 'FALLÓ'}</span> ${detail}`;
+      results.appendChild(li);
+      console.assert(passed, `[TEST FAILED] ${name}: ${detail}`);
+    }
+
+    // Test 1: Contrato Mount & Unmount
+    const test1 = typeof window.mountAgroLogistica === 'function' && typeof window.unmountAgroLogistica === 'function';
+    logTest('Prueba 1: Firmas de Ciclo de Vida', test1, 'window.mountAgroLogistica y window.unmountAgroLogistica existen.');
+
+    // Test 2: Inserción en DOM
+    window.mountAgroLogistica('test-mount-target');
+    const targetDiv = document.getElementById('test-mount-target');
+    const test2 = targetDiv.children.length > 0 && targetDiv.innerHTML.includes('Carrito');
+    logTest('Prueba 2: Instanciación de UI en DOM', test2, 'El componente debe renderizarse correctamente.');
+
+    // Test 3: Limpieza
+    window.unmountAgroLogistica('test-mount-target');
+    const test3 = targetDiv.innerHTML === '';
+    logTest('Prueba 3: Desmontaje de DOM', test3, 'El contenedor debe quedar libre.');
+  </script>
+</body>
+</html>
